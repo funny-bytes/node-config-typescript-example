@@ -1,0 +1,42 @@
+{
+  "name": "config-typescript-example",
+  "version": "1.0.0",
+  "description": "Sample project for using node-config in TypeScript",
+  "main": "build/src/index.js",
+  "scripts": {
+    "start:good": "NODE_CONFIG_DIR=./build/config node build/src/index.js",
+    "start:bad": "node build/src/index.js",
+    "dev": "ts-node-dev --rs src/index.ts",
+    "build": "npm run build:clear && npm run build:ts && npm run build:post",
+    "build:clear": "rm -rf ./build",
+    "build:ts": "tsc",
+    "build:post": "npm run build:post:replace",
+    "build:post:replace": "replace \"exports\\.default\" \"module.exports\" ./build/config/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frank Thelen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/funny-bytes/node-config-typescript-example"
+  },
+  "dependencies": {
+    "config": "^3.3.6"
+  },
+  "keywords": [
+    "node-config",
+    "config",
+    "TypeScript",
+    "tsc",
+    "heap size",
+    "memory"
+  ],
+  "devDependencies": {
+    "@types/config": "0.0.40",
+    "@types/node": "^16.11.9",
+    "replace": "^1.2.1",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.2"
+  }
+}
